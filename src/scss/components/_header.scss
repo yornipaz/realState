@@ -2,5 +2,77 @@
 @use 'abstract/mixin'as m;
 
 .header {
+    background-image: linear-gradient(to right, transparentize(v.$primary, .1) 0%, transparentize(v.$primary, .1) 100%), url("../img/header_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 3rem 0;
+    position: relative;
 
+    @include m.screen('md') {
+        padding: 3rem 0 20rem 0;
+    }
+
+    &__bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include m.screen('md') {
+            flex-direction: row;
+
+            justify-content: space-between;
+        }
+    }
+
+    &__logo {
+        width: 25rem;
+    }
+
+    &__content {
+        @include m.screen('md') {
+            margin-top: 10rem;
+            max-width: 50rem;
+        }
+    }
+
+    &__text {
+        color: v.$white;
+        display: none;
+
+        @include m.screen('md') {
+            display: block;
+        }
+    }
+
+    &__title {
+        color: v.$white;
+        text-align: center;
+
+        @include m.screen('md') {
+            text-align: left;
+        }
+    }
+
+    &__image {
+        display: none;
+
+        @include m.screen('md') {
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: -5rem;
+            max-width: 35rem;
+
+            img {
+                border-top-left-radius: 2rem;
+                border-bottom-left-radius: 5rem;
+            }
+
+
+        }
+
+        @include m.screen('xl') {
+            max-width: 60rem;
+        }
+    }
 }

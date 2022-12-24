@@ -104,21 +104,26 @@
 }
 
 @mixin screen($type) {
-  @if $type=='phones' {
-    @media (min-width: v.$screen-phones) {
+  @if $type=='sm' {
+    @media (min-width: v.$sm) {
       @content;
     }
   }
 
-  @if $type=='table' {
-    @media (min-width: v.$screen-table) {
+  @if $type=='md' {
+    @media (min-width: v.$md) {
       @content;
     }
 
   }
 
-  @if $type=='desktop' {
-    @media (min-width: v.$screen-desktop) {
+  @if $type=='lg' {
+    @media (min-width: v.$lg) {
+      @content;
+    }
+  }
+  @if $type=='xl' {
+    @media (min-width: v.$xl) {
       @content;
     }
   }

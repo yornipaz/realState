@@ -42,7 +42,6 @@
 // color, background and border styles helpers
 
 @include m.generate-color('primary', v.$primary);
-@include m.generate-color('secondary', v.$secondary);
 @include m.generate-color('black', v.$black);
 @include m.generate-color('white', v.$white);
 @include m.generate-color('light-grey', v.$light-grey);
