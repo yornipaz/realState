@@ -1,0 +1,49 @@
+@use 'abstract/mixin'as m;
+@use 'abstract/variable'as v;
+
+.property {
+    background-color: v.$white;
+
+    &__img {
+        aspect-ratio: 10 / 6;
+        background-size: cover;
+        position: relative;
+    }
+
+    @for $i from 1 through 6 {
+        $url: '../img/propiedad_'+$i+'.jpg';
+
+        &:nth-child(#{$i}) &__img {
+            background-image: linear-gradient(to bottom, transparentize(v.$black, 1%) 0%, transparentize(v.$black, .3%) 100%), url($url);
+        }
+
+    }
+
+    &__name {
+        color: v.$white;
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        font-size: 2rem;
+    }
+
+    &__content {
+        padding: 2rem;
+
+    }
+
+    &__text {
+        margin-bottom: 0;
+    }
+
+    &__price {
+        margin: 0;
+        font-size: 3rem;
+    }
+
+    &__link {
+        @include m.button(v.$primary, v.$white);
+        display: block;
+        text-transform: uppercase;
+    }
+}

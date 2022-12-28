@@ -122,6 +122,7 @@
       @content;
     }
   }
+
   @if $type=='xl' {
     @media (min-width: v.$xl) {
       @content;
@@ -140,17 +141,25 @@
 
 @mixin button($color, $text) {
   background-color: $color;
-  padding: 2rem 4rem;
+  padding: 1.3rem 1rem;
   color: $text;
-  margin-top: 1rem;
-  border-radius: 3rem;
+  margin-top: 2rem;
   font-size: 2rem;
+  font-weight: 400;
+  display: inline-block;
   font-weight: 700;
-  display: block;
+  border: none;
+  transition-property: background-color;
+  transition-duration: .3s;
+  text-align: center;
 
-  @include screen('table') {
-    display: inline-block;
+
+  @include screen('md') {
+    width: auto;
   }
+  &:hover {
+    background-color: darken( $color, 10% );
+}
 }
 
 @mixin bgImage($url, $color) {
@@ -207,5 +216,22 @@
 
   >* {
     scroll-snap-align: start;
+  }
+}
+
+@mixin title {
+  font-weight: 400;
+
+  span {
+    font-weight: 700;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1rem;
+    width: 15rem;
+    margin-top: 1rem;
+    background-image: linear-gradient(to right, v.$primary 0%, v.$primary 50%, lighten(v.$primary, 20%) 50%, lighten(v.$primary, 20%) 100%);
   }
 }

@@ -1,0 +1,22 @@
+@use 'abstract/mixin'as m;
+@use 'abstract/variable'as v;
+
+.properties {
+    margin-top: 5rem;
+
+    @include m.screen('md') {
+        margin-top: 10rem;
+    }
+
+    &__title {
+        @include m.title;
+    }
+
+    &__wrapper {
+        @include m.grid(1, 2rem);
+
+        @include m.screen('md') {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
