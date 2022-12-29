@@ -1,4 +1,4 @@
-@use 'variable'as v;
+@use "variable" as v;
 // Generate property colors (color, background-colors and border-color) from current project palette.
 ///
 /// @author Felipe Bonilla
@@ -19,7 +19,6 @@
 ///     //  }
 
 @mixin generate-color($name, $color) {
-
   .color-#{$name} {
     color: $color;
   }
@@ -31,7 +30,6 @@
   .border-#{$name} {
     border-color: $color;
   }
-
 }
 
 /// Import and declare the font face.
@@ -55,10 +53,7 @@
 ///     //      font-style: normal;
 ///     //  }
 
-@mixin font-face($font-name,
-  $file-name,
-  $weight: normal,
-  $style: normal) {
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
   @at-root {
     @font-face {
       font-family: $font-name;
@@ -74,7 +69,7 @@
 
 /// Create CSS var palette
 ///
-/// @author Felipe Bonilla 
+/// @author Felipe Bonilla
 /// @group GUATIC
 ///
 /// @param {String} $name - Color's name.
@@ -104,40 +99,36 @@
 }
 
 @mixin screen($type) {
-  @if $type=='sm' {
+  @if $type== "sm" {
     @media (min-width: v.$sm) {
       @content;
     }
   }
 
-  @if $type=='md' {
+  @if $type== "md" {
     @media (min-width: v.$md) {
       @content;
     }
-
   }
 
-  @if $type=='lg' {
+  @if $type== "lg" {
     @media (min-width: v.$lg) {
       @content;
     }
   }
 
-  @if $type=='xl' {
+  @if $type== "xl" {
     @media (min-width: v.$xl) {
       @content;
     }
   }
-
 }
 
 @mixin grid($column, $gap) {
   display: grid;
   grid-template-columns: repeat($column, 1fr);
   gap: $gap;
-
 }
-
 
 @mixin button($color, $text) {
   background-color: $color;
@@ -150,16 +141,15 @@
   font-weight: 700;
   border: none;
   transition-property: background-color;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   text-align: center;
 
-
-  @include screen('md') {
+  @include screen("md") {
     width: auto;
   }
   &:hover {
-    background-color: darken( $color, 10% );
-}
+    background-color: darken($color, 10%);
+  }
 }
 
 @mixin bgImage($url, $color) {
@@ -167,31 +157,25 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-
 }
 
 @mixin headingBorder($color, $lineColor) {
-
   display: inline-block;
   margin-top: 5rem;
   color: $color;
 
-  @include screen('table') {
+  @include screen("table") {
     margin-top: 0;
   }
 
   &::after {
-    content: '';
+    content: "";
     background-color: $lineColor;
     height: 1rem;
     width: calc(100% + 1rem);
     display: block;
     margin: -2rem 0 0 0;
   }
-
-
-
-
 }
 
 @mixin bgIcon($url) {
@@ -201,10 +185,10 @@
   background-size: 10rem;
 }
 
-/// create scroll view horizontally 
+/// create scroll view horizontally
 /// @author Felipe Bonilla
 /// @group GUATIC
-/// @example scss 
+/// @example scss
 ///  @include mixin.scrollHorizontal;
 ///
 ///
@@ -214,24 +198,33 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
 
-  >* {
+  > * {
     scroll-snap-align: start;
   }
 }
 
-@mixin title {
+@mixin title($space: false) {
   font-weight: 400;
 
   span {
     font-weight: 700;
+    @if ($space) {
+      display: block;
+    }
   }
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     height: 1rem;
     width: 15rem;
     margin-top: 1rem;
-    background-image: linear-gradient(to right, v.$primary 0%, v.$primary 50%, lighten(v.$primary, 20%) 50%, lighten(v.$primary, 20%) 100%);
+    background-image: linear-gradient(
+      to right,
+      v.$primary 0%,
+      v.$primary 50%,
+      lighten(v.$primary, 20%) 50%,
+      lighten(v.$primary, 20%) 100%
+    );
   }
 }

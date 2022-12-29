@@ -1,0 +1,31 @@
+@use "abstract/mixin" as m;
+@use "abstract/variable" as v;
+.testimonial {
+  text-align: center;
+  img {
+    width: 20rem;
+    height: auto;
+    margin: 0 auto;
+  }
+  &__content {
+    background-color: v.$white;
+    margin-top: -10rem;
+    padding: 10rem 2rem 2rem 2rem;
+  }
+  &__name {
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+  &__text {
+    &::before {
+      content: "";
+      background-image: url(../img/quote.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block ;
+      margin-right: 1rem;
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@use "abstract/mixin" as m;
+@use "abstract/variable" as v;
+
+.posts {
+  margin-top: 5rem;
+  @include m.screen("md") {
+    @include m.grid(3, 4rem);
+  }
+  &__blog {
+    @include m.screen("md") {
+      grid-column: 2 / 4;
+    }
+  }
+  &__title {
+    @include m.title(true);
+  }
+}
